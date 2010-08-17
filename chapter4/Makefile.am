@@ -1,2 +1,2 @@
 ACLOCAL_AMFLAGS = $$ACLOCAL_ARGS
-SUBDIRS = test
+SUBDIRS = src test

@@ -1,5 +1,5 @@
 #include <cutter.h>
-#include <stdint.h>
+#include "LedDriver.h"
 
 void cut_setup(void)
 {

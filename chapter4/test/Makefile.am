@@ -4,7 +4,7 @@ TESTS_ENVIRONMENT = NO_MAKE=yes CUTTER="$(CUTTER)"
 noinst_LTLIBRARIES = test_leddriver.la
 
 INCLUDES = $(CUTTER_CFLAGS) -I$(top_srcdir)/src
-LIBS = $(CUTTER_LIBS)
+LIBS = $(CUTTER_LIBS) $(top_builddir)/src/libleddriver.la
 
 LDFLAGS = -module -rpath $(libdir) -avoid-version -no-undefined
 
