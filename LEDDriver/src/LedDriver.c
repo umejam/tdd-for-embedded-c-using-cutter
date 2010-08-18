@@ -10,7 +10,7 @@ void LedDriver_Create(uint16_t* address)
 
 void LedDriver_TurnOn(int ledNumber)
 {
-  *ledAddress = 1;
+  *ledAddress |= (1 << (ledNumber - 1));
 }
 
 void LedDriver_TurnOff(int ledNumber)
