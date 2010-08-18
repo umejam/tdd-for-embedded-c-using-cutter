@@ -16,10 +16,19 @@ void test_LedsOffAfterInitialization(void)
   cut_assert_equal_uint_least16(0, virtualLeds);
 }
 
-void test_TurnOnLedOn(void)
+void test_TurnOnLedOne(void)
 {
   uint16_t virtualLeds;
   LedDriver_Create(&virtualLeds);
   LedDriver_TurnOn(1);
   cut_assert_equal_uint_least16(1, virtualLeds);
+}
+
+void test_TurnOffLedOne(void)
+{
+  uint16_t virtualLeds;
+  LedDriver_Create(&virtualLeds);
+  LedDriver_TurnOn(1);
+  LedDriver_TurnOff(1);
+  cut_assert_equal_uint_least16(0, virtualLeds);
 }
