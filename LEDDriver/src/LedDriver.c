@@ -25,7 +25,7 @@ void LedDriver_TurnOn(int ledNumber)
 
 void LedDriver_TurnOff(int ledNumber)
 {
-  *ledAddress = 0;
+  *ledAddress &= ~convertLedNumberToBit(ledNumber);
 }
 
 void LedDriver_TurnAllOn(void)
