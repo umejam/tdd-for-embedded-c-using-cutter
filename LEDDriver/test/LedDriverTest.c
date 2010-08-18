@@ -51,3 +51,10 @@ void test_AllOn(void)
   LedDriver_TurnAllOn();
   cut_assert_equal_uint_least16(0xffff, virtualLeds);
 }
+
+void test_LedMemoryIsNotReadable(void)
+{
+  virtualLeds = 0xffff;
+  LedDriver_TurnOn(8);
+  cut_assert_equal_uint_least16(0x80, virtualLeds);
+}
