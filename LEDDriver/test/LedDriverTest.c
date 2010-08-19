@@ -93,3 +93,9 @@ void test_OutOfBoundsProducesRuntimeError(void)
   cut_assert_equal_string("LED Driver: out-of-bounds LED",
 			  RuntimeErrorStub_GetLastError());
 }
+
+void test_OutOfBoundsToDo(void)
+{
+  cut_pend("TODO: what should we do during runtime?");
+}
+
