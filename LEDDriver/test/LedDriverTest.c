@@ -1,5 +1,6 @@
 #include <cutter.h>
 #include "LedDriver.h"
+#include "RuntimeErrorStub.h"
 
 static uint16_t virtualLeds;
 
@@ -84,4 +85,11 @@ void test_OutOfBoundsTurnOffDoesNoHarm(void)
   LedDriver_TurnOff(17);
   LedDriver_TurnOff(3141);
   cut_assert_equal_uint_least16(0xffff, virtualLeds);
+}
+
+void test_OutOfBoundsProducesRuntimeError(void)
+{
+  LedDriver_TurnOn(-1);
+  cut_assert_equal_string("LED Driver: out-of-bounds LED",
+			  RuntimeErrorStub_GetLastError());
 }

@@ -1,4 +1,5 @@
 #include "LedDriver.h"
+#include "RuntimeError.h"
 
 static uint16_t* ledsAddress;
 static uint16_t ledsImage;
@@ -18,6 +19,16 @@ static void updateHardware(void)
   *ledsAddress = ledsImage;
 }
 
+static int isInBounds(int ledNumber)
+{
+  if ((ledNumber > 16) || (ledNumber <= 0)) {
+    RUNTIME_ERROR("LED Driver: out-of-bounds LED", ledNumber);
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
 void LedDriver_Create(uint16_t* address)
 {
   ledsAddress = address;
@@ -27,7 +38,7 @@ void LedDriver_Create(uint16_t* address)
 
 void LedDriver_TurnOn(int ledNumber)
 {
-  if ((ledNumber > 16) || (ledNumber <= 0)) {
+  if (!isInBounds(ledNumber)) {
     return;
   }
 
@@ -37,7 +48,7 @@ void LedDriver_TurnOn(int ledNumber)
 
 void LedDriver_TurnOff(int ledNumber)
 {
-  if ((ledNumber > 16) || (ledNumber <= 0)) {
+  if (!isInBounds(ledNumber)) {
     return;
   }
 
