@@ -128,3 +128,10 @@ void test_TurnOffMultipleLeds(void)
   LedDriver_TurnOff(8);
   cut_assert_equal_uint_least16((~0x180) & 0xffff, virtualLeds);
 }
+
+void test_AllOff(void)
+{
+  LedDriver_TurnAllOn();
+  LedDriver_TurnAllOff();
+  cut_assert_equal_uint_least16(0, virtualLeds);
+}
