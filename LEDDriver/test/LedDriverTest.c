@@ -121,5 +121,10 @@ void test_IsOff(void)
   cut_assert_false(LedDriver_IsOff(12));
 }
 
-  
-  
+void test_TurnOffMultipleLeds(void)
+{
+  LedDriver_TurnAllOn();
+  LedDriver_TurnOff(9);
+  LedDriver_TurnOff(8);
+  cut_assert_equal_uint_least16((~0x180) & 0xffff, virtualLeds);
+}
