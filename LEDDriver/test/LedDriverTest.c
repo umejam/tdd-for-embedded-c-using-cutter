@@ -99,3 +99,15 @@ void test_OutOfBoundsToDo(void)
   cut_omit("TODO: what should we do during runtime?");
 }
 
+void test_IsOn(void)
+{
+  cut_assert_false(LedDriver_IsOn(11));
+  LedDriver_TurnOn(11);
+  cut_assert_true(LedDriver_IsOn(11));
+}
+
+void test_OutOfBoundsLedsAreAlwaysOff(void)
+{
+  cut_assert_false(LedDriver_IsOn(0));
+  cut_assert_false(LedDriver_IsOn(17));
+}

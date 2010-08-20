@@ -77,3 +77,13 @@ void LedDriver_TurnAllOn(void)
   ledsImage = ALL_LEDS_ON;
   updateHardware();
 }
+
+bool LedDriver_IsOn(int ledNumber)
+{
+  //TODO: Determine the right answer for an invalid query
+  if (isLedOutOfBounds(ledNumber)) {
+    return false;
+  }
+  return ledsImage & convertLedNumberToBit(ledNumber);
+}
+
