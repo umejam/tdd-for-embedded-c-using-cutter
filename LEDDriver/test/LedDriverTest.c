@@ -110,4 +110,16 @@ void test_OutOfBoundsLedsAreAlwaysOff(void)
 {
   cut_assert_false(LedDriver_IsOn(0));
   cut_assert_false(LedDriver_IsOn(17));
+  cut_assert_true(LedDriver_IsOff(0));
+  cut_assert_true(LedDriver_IsOff(17));
 }
+
+void test_IsOff(void)
+{
+  cut_assert_true(LedDriver_IsOff(12));
+  LedDriver_TurnOn(12);
+  cut_assert_false(LedDriver_IsOff(12));
+}
+
+  
+  
