@@ -96,6 +96,6 @@ void test_OutOfBoundsProducesRuntimeError(void)
 
 void test_OutOfBoundsToDo(void)
 {
-  cut_pend("TODO: what should we do during runtime?");
+  cut_omit("TODO: what should we do during runtime?");
 }
 
